@@ -1,0 +1,35 @@
+{% extends 'cablecomp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+
+    <div id="example-table"></div>
+    <link rel="stylesheet" href="{% static 'css/tabulator.min.css' %}" type="text/css">
+    <script type="text/javascript" src="{% static 'js/tabulator.min.js' %}"></script>
+    <script type="text/javascript">
+        
+        var tabledata = {{ table_dict | safe}};
+
+        var table = new Tabulator("#example-table", {
+            data:tabledata, //load row data from array
+            layout:"fitColumns", //fit columns to width of table (optional)
+            columns:[ //Define Table Columns
+                {title:"State", field:"state", editor:"input"},
+                {title:"City", field:"city", editor:"input"},
+                {title:"Fiber Cable", field:"fiber cable", editor:"input"},
+                {title:"Subcable", field:"subcable", editor:"input"},
+                {title:"Installed", field:"installed", editor:"input"},
+                {title:"Building Type", field:"buidling type", editor:"input"},
+                {title:"Street", field:"street", editor:"input"},
+                {title:"Number", field:"number", editor:"input"},
+                {title:"Zone", field:"zone", editor:"input"},
+            ],
+        });
+
+    </script>
+
+</body>
+
+{% endblock %}
